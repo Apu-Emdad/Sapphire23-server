@@ -4,7 +4,8 @@ import User from "../models/User.js";
 export const getUsers = async (req, res) => {
   try {
     const id = req.params.id;
-    const users = id ? User.findById(id) : User.find();
+    const users = id ? await User.findById(id) : await User.find();
+    console.log("user:", users);
     res.status(200).json(users);
   } catch (err) {
     res.status(404).json({ message: err.message });
