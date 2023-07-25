@@ -17,9 +17,13 @@ export const createPost = async (req, res) => {
       likes: {},
       comments: [],
     });
-    await newPost.save();
+    console.log(" posts req.body", req.body);
+    // await newPost.save();
+    const post = await Post.find();
+    res.status(201).json(newPost);
   } catch (err) {
-    res.statu(409).json({ message: err.message });
+    console.log("err.message", err.message);
+    res.status(409).json({ message: err.message });
   }
 };
 /* ---- CREATE POST ---- */
