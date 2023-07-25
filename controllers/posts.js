@@ -1,6 +1,6 @@
 import User from "../models/User.js";
 import Post from "../models/Post.js";
-
+import { fileName } from "../index.js";
 /* ++++ CREATE POST ++++ */
 export const createPost = async (req, res) => {
   try {
@@ -13,14 +13,14 @@ export const createPost = async (req, res) => {
       location: user.location,
       description,
       userPicturePath: user.picturePath,
-      picturePath,
+      picturePath: fileName,
       likes: {},
       comments: [],
     });
     console.log(" posts req.body", req.body);
-    // await newPost.save();
-    const post = await Post.find();
-    res.status(201).json(newPost);
+    await newPost.save();
+    const posts = await Post.find();
+    res.status(201).json(posts);
   } catch (err) {
     console.log("err.message", err.message);
     res.status(409).json({ message: err.message });

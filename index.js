@@ -38,12 +38,18 @@ app.use("/assets", express.static(path.join(__dirname, "public/assets")));
 /* ---- Configuration ---- */
 
 /* ++++ Multer File Storage (https://github.com/expressjs/multer#diskstorage) ++++ */
+export let fileName;
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, "public/assets");
   },
   filename: function (req, file, cb) {
-    cb(null, file.originalname);
+    const fileNameExtension = file.originalname.split(".").pop();
+    fileName = `${Date.now()}_${Math.random()
+      .toString(36)
+      .slice(2, 11)}.${fileNameExtension}`;
+    console.log("fileName:", fileName);
+    cb(null, fileName);
   },
 });
 const upload = multer({ storage });
