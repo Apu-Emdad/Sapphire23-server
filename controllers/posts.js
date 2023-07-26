@@ -31,17 +31,17 @@ export const createPost = async (req, res) => {
 /* ++++ GET POST ++++ */
 export const getFeedPosts = async (req, res) => {
   try {
-    const post = await Post.find();
+    const post = await Post.find().sort({ createdAt: -1 });
     res.status(200).json(post);
   } catch (err) {
-    res.statust(404).json({ message: err.message });
+    res.status(404).json({ message: err.message });
   }
 };
 
 export const getUserPosts = async (req, res) => {
   try {
     const { userId } = req.params;
-    const post = await Post.find({ userId });
+    const post = await Post.find({ userId }).sort({ createdAt: -1 });
     res.status(200).json(post);
   } catch (err) {
     res.status(404).json({ message: err.message });
@@ -64,6 +64,7 @@ export const likePost = async (req, res) => {
     );
     res.status(200).json(updatedPost);
   } catch (err) {
+    console.log("message:", err.message);
     res.status(404).json({ message: err.message });
   }
 };
