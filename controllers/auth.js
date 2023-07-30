@@ -1,6 +1,7 @@
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import User from "../models/User.js";
+import { fileName } from "../index.js";
 
 /* ++++ REGISTER USER ++++ */
 export const register = async (req, res) => {
@@ -24,14 +25,14 @@ export const register = async (req, res) => {
       lastName,
       email,
       password: passwordHash,
-      picturePath,
+      picturePath: fileName,
       friends,
       location,
       occupation,
       viewedProfile: Math.floor(Math.random() * 100000),
       impressions: Math.floor(Math.random() * 100000),
     });
-    console.log(newUser);
+    console.log("newUser", newUser);
     const savedUser = await newUser.save();
     console.log(savedUser);
     res.status(201).json(savedUser);

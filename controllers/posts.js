@@ -19,7 +19,7 @@ export const createPost = async (req, res) => {
     });
     console.log(" posts req.body", req.body);
     await newPost.save();
-    const posts = await Post.find();
+    const posts = await Post.find().sort({ createdAt: -1 });
     res.status(201).json(posts);
   } catch (err) {
     console.log("err.message", err.message);
