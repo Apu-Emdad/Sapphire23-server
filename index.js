@@ -64,6 +64,9 @@ app.post("/posts", verifyToken, upload.single("picture"), createPost);
 app.use("/auth", authRoutes);
 app.use("/users", userRoutes);
 app.use("/posts", postRoutes);
+app.get("/", (req, res) => {
+  res.send("Hello from Sapphire-23");
+});
 
 /* --- ROUTES ---- */
 
