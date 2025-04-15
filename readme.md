@@ -5,7 +5,7 @@ interact with other users.
 
 |                                                    |                                                                   |                                                                   |
 | -------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- |
-| [Live](https://sapphire-23-client.vercel.app/home) | [Github(client)](https://github.com/Apu-Emdad/Sapphire-23-client) | [Github(client)](https://github.com/Apu-Emdad/Sapphire-23-client) |
+| [Live](https://sapphire-23-client.vercel.app/home) | [Github(client)](https://github.com/Apu-Emdad/Sapphire-23-client) | [Github(server)](https://github.com/Apu-Emdad/Sapphire23-server) |
 
 - Visitor email: visitor@visitor.com
 - Password: 123456
